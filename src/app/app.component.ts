@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router, NavigationEnd } from '@angular/router';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 
@@ -10,14 +10,29 @@ import { SidebarComponent } from './shared/components/sidebar/sidebar.component'
   imports: [CommonModule, RouterModule, HeaderComponent, SidebarComponent],
   template: `
     <div class="app-container">
-      <app-header></app-header>
+      <app-header *ngIf="!isLoginRoute"></app-header>
       <div class="main-content">
-        <app-sidebar></app-sidebar>
-        <main>
+        <app-sidebar *ngIf="!isLoginRoute"></app-sidebar>
+        <main [class.full-width]="isLoginRoute">
           <router-outlet></router-outlet>
         </main>
       </div>
     </div>
-  `
+  `,
+  styles: [`
+    .full-width {
+      width: 100%;
+    }
+  `]
 })
-export class AppComponent {}
+export class AppComponent {
+  isLoginRoute: boolean = false;
+
+  constructor(private router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.isLoginRoute = this.router.url === '/login';
+      }
+    });
+  }
+}
