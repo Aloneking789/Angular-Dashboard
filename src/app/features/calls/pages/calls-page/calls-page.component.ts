@@ -42,8 +42,8 @@ import { KeyInformationComponent } from '../../components/key-information/key-in
 
     <!-- Contact Info Section -->
     <div style="flex: 1; text-align: center;">
-      <p style="margin: 0; font-size: 16px; color: black;">Email: <a href="mailto:contact@yourcompany.com" style="color: black; text-decoration: none;">contact yourcompany.com</a></p>
-      <p style="margin: 0; font-size: 16px; color: black;">Phone: <a href="tel:+1234567890" style="color: black; text-decoration: none;">+1 234 567 890</a></p>
+      <p style="margin: 0; font-size: 16px; color: black;">Email: <a href="mailto:info@vtorlabs.com" style="color: black; text-decoration: none;">contact info&#64;vtorlabs.com</a></p>
+      <p style="margin: 0; font-size: 16px; color: black;">Phone: <a href="tel:+918450908431" style="color: black; text-decoration: none;">+91 8450908431</a></p>
     </div>
 
     <!-- Copyright Section -->
