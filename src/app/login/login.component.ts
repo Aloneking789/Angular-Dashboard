@@ -14,8 +14,18 @@ import { AuthService } from '../core/services/auth.service';
         <h2>Login to Dashboard</h2>
         
         <div class="login-methods">
-          <button class="login-method email-login active">Email</button>
-          <button class="login-method mobile-login">Mobile</button>
+          <button 
+            class="login-method email-login" 
+            [class.active]="loginMethod === 'email'"
+            (click)="switchLoginMethod('email')">
+            Email
+          </button>
+          <button 
+            class="login-method mobile-login" 
+            [class.active]="loginMethod === 'mobile'"
+            (click)="switchLoginMethod('mobile')">
+            Mobile
+          </button>
         </div>
 
         <!-- Email Login Form -->
@@ -260,6 +270,11 @@ export class LoginComponent {
 
   switchLoginMethod(method: 'email' | 'mobile') {
     this.loginMethod = method;
+    // Reset form when switching methods
+    this.username = '';
+    this.password = '';
+    this.mobileNumber = '';
+    this.otp = '';
     this.otpSent = false;
   }
 }
